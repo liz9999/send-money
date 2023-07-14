@@ -1,38 +1,372 @@
-.App {
-  text-align: center;
+.main-container {
+  margin: auto;
+  padding: 0 2vw;
+  max-width: 1200px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item { 
+  text-decoration: none; 
+  color:black 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.account-carousel {
+  box-sizing: border-box;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 22px;
+  margin-bottom: 32px;
   display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  gap: 12px;
+  overflow-x: scroll;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  pointer-events: all;
+  padding-right: 1vw;
+}
+
+.account-card {
+  height: 208px;
+  width: 208px;
+  border-radius: 16px;
+  background-color: rgba(22, 51, 0, 0.13);
+  line-height: 16px;
+  display: flex;
+  flex: 0 0 208px;
   flex-direction: column;
+  flex-grow: 0;
+  flex-shrink: 0;
+  justify-content: space-between;
+  position: relative;
+}
+
+.account-card:hover {
+  background-color: rgba(22, 51, 0, 0.192);
+}
+
+.account-card img {
+  border-radius: 50%;
+  max-width: 48px;
+  padding: 16px;
+}
+
+.account-text {
+  padding: 0 1rem 0 1rem;
+}
+
+.lookup button {
+  margin-left: 1rem;
+  border-radius: 25px;
+  min-height: 24px;
+  padding: 5px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #000;
+  background-color: #7FFFD4;
+}
+
+.transaction-lookup {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.transaction-lookup a input, .transaction-lookup input {
+  border-radius: 25px;
+  height: 24px;
+  min-height: 24px;
+  max-width: 360px;
+  width: 40vw;
+  padding: 5px 12px;
+  border: 2px solid #000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.transaction-item {
+  border-radius: 16px;
+  align-items: flex-start;
+  display: flex;
+  font-weight: inherit;
+  justify-content: space-between;
+  transition: all .3s ease;
+  padding: 0 1vw;
+  align-items: center;
+  line-height: 22px;
+  margin: 1vw 0;
+}
+
+.transaction-item:hover {
+  background-color: rgba(22, 51, 0, 0.192);
+}
+
+.transaction-left img {
+  border-radius: 50%;
+  height: 48px;
+  width: 48px;
+  margin-right: 16px;
+}
+
+.transaction-left {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding-right: 20px;
+}
+
+.transaction-text p, .transaction-text h2 {
+  text-align: right;
+}
+
+.mobile-button {
+  display: none;
+}
+
+.currency-converter a {
+  border-radius: 25px;
+  min-height: 24px;
+  padding: 5px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #000;
+  background-color: #7FFFD4;
+  text-decoration: none;
+}
+
+.money-button {
+    display: flex;
+    justify-content: center;
+    margin-left: -8%;
+    margin-bottom: 1vw;
+}
+
+@media (max-width: 450px) {
+  .transaction-lookup {
+    display: block;
   }
-  to {
-    transform: rotate(360deg);
+
+  .transaction-lookup h1, .account-header h1, .currency-converter h1 {
+    margin: 1.5vh 0;
   }
+
+  .transaction-lookup a input, .transaction-lookup input {
+    width: 88vw;
+  }
+}
+
+@media (max-width: 500px) {
+  .transaction-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  .transaction-item h2 {
+    font-size: 1em;
+  }
+}
+
+@media (max-width: 600px) {
+  .transaction-lookup button {
+    display: none;
+  }
+
+  .mobile-button button {
+    display: inline-block;
+    border-radius: 25px;
+    min-height: 24px;
+    padding: 5px 16px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: 2px solid #000;
+    background-color: #7FFFD4;
+  }
+
+  .mobile-button {
+    display: flex;
+    justify-content: center;
+  }
+}
+ 
+.cancelled {
+  opacity: 50%;
+}
+
+.cancelled:hover {
+  opacity: 100%;
+}
+
+.cancelled .transaction-text {
+  text-decoration: line-through;
+}
+
+.conversion-parts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  padding: 0 1vw;
+}
+
+.rate-table {
+  width: 240px;
+  margin: auto;
+}
+
+.currency-name {
+  text-align: left;
+}
+
+.currency-rate {
+  text-align: right;
+}
+
+.currency-box{
+  background: #fff;
+  border: 2px solid #000;
+  width: 560px;
+  display: grid;
+  grid-template-columns: 85% 15%;
+  border-radius: 25px;
+  margin-bottom: 1vw;
+}
+
+.currency-input, .currency-type{
+  background: none;
+  border:0;
+  color:#000;
+  font-size: 24px;
+}
+
+.currency-input{
+  padding-left: 1vw;
+}
+
+.currency-type{
+  padding: 8px;
+}
+
+@media (max-width: 880px)
+{
+  .currency-type {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding: 4px;
+  }
+
+  .currency-type::-ms-expand {
+    display: none;
+  }
+
+  .currency-box{ 
+    width: 75%;
+    max-width: 320px;
+    display: grid;
+    grid-template-columns: 76% 24%;
+    margin: auto;
+  }
+
+  .currency-input{
+    padding-left: 2vw;
+  }
+
+  .currency-converter h3 {
+    font-size: 1em;
+  }
+
+  .conversion-parts {
+    display: block;
+    text-align: center;
+  }
+
+  .account-rates {
+    margin-top: 2vh;
+  }
+
+  .money-button {
+    display: flex;
+    justify-content: center;
+    margin: 16px 0;
+  }
+}
+
+.nav-menu {
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 0ms;
+}
+
+.navbar-container {
+  margin: 0 2vw;
+}
+
+.navbar-container img {
+  height: 48px;
+}
+
+.nav-menu.active {
+  left: 0;
+  transition: 160ms;
+  background-color: white;
+  z-index: 99;
+  display: flex;
+  align-items: center;
+}
+
+.nav-text a:hover {
+  background-color: #1a83ff;
+}
+
+.menu-bars {
+  padding-top: 16px;
+}
+
+.navbar-close {
+  margin-left: 250px;
+}
+
+.nav-menu-items {
+  list-style-type: none;
+}
+
+.nav-menu-items li {
+  margin: 16px 0;
+}
+
+.menu-bars.toggle {
+  visibility: hidden;
+}
+
+.navbar-toggle {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.sidebar-toggle-in {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  opacity: .9;
+  background-color: rgba(0,0,0,.6);
+  z-index: 99;
+}
+
+.sidebar-toggle-in a img {
+  top: 16px;
+  position: fixed;
+  z-index: 100;
+}
+
+.sidebar-toggle-out {
+  display: none;
+}
+
+.navbar-container {
+  margin-top: 16px;
 }
