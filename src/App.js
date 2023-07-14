@@ -2,7 +2,7 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import './App.css';
 import Navbar from './Components/Navbar';
 import axios from 'axios'
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'
 import Home from './Pages/Home'
 import TransactionsPage from './Pages/TransactionsPage'
 import Send from './Pages/Send'
@@ -42,6 +42,7 @@ function App() {
         <Wrapper>
           <Navbar />
           <Routes>
+            <Route path="/" element={<Navigate to="/send-money" replace={true} />} />
             <Route path="/send-money" element={<Home format={format} rates={rates}/>} />
             <Route path="/transactions" element={<TransactionsPage format={format} rates={rates}/>} />
             <Route path="/send" element={<Send format={format} rates={rates} />} />
