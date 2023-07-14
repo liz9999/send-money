@@ -38,12 +38,11 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter> 
+      <BrowserRouter basename="/send-money"> 
         <Wrapper>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Navigate to="/send-money" replace={true} />} />
-            <Route path="/send-money" element={<Home format={format} rates={rates}/>} />
+            <Route path="/" element={<Home format={format} rates={rates}/>} />
             <Route path="/transactions" element={<TransactionsPage format={format} rates={rates}/>} />
             <Route path="/send" element={<Send format={format} rates={rates} />} />
           </Routes>

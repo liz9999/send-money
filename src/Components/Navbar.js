@@ -25,7 +25,7 @@ const Navbar = () => {
       <div className={navbar ? "nav-menu active" : "nav-menu"}>
         <ul className="nav-menu-items" onClick={showNavbar}>
           <li>
-            <Link to="/send-money">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li>
             <Link to="/transactions">Transactions</Link>

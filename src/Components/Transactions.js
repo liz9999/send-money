@@ -11,7 +11,7 @@ const Transactions = ( {rates, format} ) => {
   const location = useLocation();
 
   useEffect(() => {
-    if (location.pathname === '/send-money') {
+    if (location.pathname === '/') {
       setTransactions(transactions.slice(0,3))
       setCheckpage(false)
     }
