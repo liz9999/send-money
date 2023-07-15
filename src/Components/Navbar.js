@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import menu from '../Assets/menu.png'
 import cancelled from '../Assets/cancelled.png'
@@ -7,8 +7,20 @@ const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
 
   const showNavbar = () => {
-    setNavbar(!navbar)
+    if (width < 1712) {
+      setNavbar(!navbar)
+    }
   }
+
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className="navbar-container">

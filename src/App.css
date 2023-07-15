@@ -300,7 +300,7 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
 }
 
 .navbar-container {
-  margin: 0 2vw;
+  margin: 0 1rem;
 }
 
 .navbar-container img {
@@ -369,4 +369,29 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
 
 .navbar-container {
   margin-top: 16px;
+}
+
+.navbar {
+  width: 1200px;
+  margin: auto;
+}
+
+@media (min-width: 1712px) {
+  .navbar {
+    display: none;
+  }
+
+  .nav-menu {
+    left: 0;
+    background-color: white;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media (min-width: 1800px) {
+  .nav-menu {
+    left: calc(32vw - 560px);
+  }
 }
