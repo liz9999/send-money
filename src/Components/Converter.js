@@ -37,10 +37,10 @@ const Converter = ( {format, rates} ) => {
             <div className="currency-converter">
                 <h3>You send</h3>
                 <CurrencyInputs onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change}
-                currencies={currencies} amount={amount1} currency={currency1}/>
+                currencies={currencies} amount={amount1} currency={currency1} disabled={false}/>
                 <h3>Recipient receives</h3>
                 <CurrencyInputs onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change}
-                currencies={currencies} amount={amount2} currency={currency2}/>
+                currencies={currencies} amount={amount2} currency={currency2} disabled={false}/>
                 <div className="money-button">
                     <Link to="/send" state={{ amount1, amount2, currency1, currency2 }}>
                         Send Money

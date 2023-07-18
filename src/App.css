@@ -155,7 +155,10 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
   }
 
   .transaction-lookup a input, .transaction-lookup input {
-    width: 88vw;
+    max-width: calc(100% - 24px);
+    width: 100%;
+    padding: 5px 12px;
+    border: 2px solid #000;
   }
 }
 
@@ -177,13 +180,7 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
 
   .mobile-button button {
     display: inline-block;
-    border-radius: 25px;
-    min-height: 24px;
-    padding: 5px 16px;
-    font-size: 1rem;
-    font-weight: bold;
-    border: 2px solid #000;
-    background-color: #7FFFD4;
+ 
   }
 
   .mobile-button {
@@ -307,7 +304,7 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
   margin: 0 1rem;
 }
 
-.navbar-container img {
+.navbar-container .menu-bars .toggle, .menu-bars img {
   height: 48px;
 }
 
@@ -317,7 +314,19 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
   background-color: white;
   z-index: 99;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  padding-top: 10vh;
+}
+
+.navbar-close img{
+  max-width: 48px;
+}
+
+.navbar-header {
+  max-width: 160px;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav-text a:hover {
@@ -339,22 +348,18 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
 }
 
 .nav-menu-items li {
-  margin: 16px 0;
+  margin: 32px 0;
+  display: flex;
+  align-items: center;
 }
 
 .nav-menu-items li a {
   text-decoration: none;
+  margin-left: 8px;
 }
 
 .menu-bars.toggle {
   visibility: hidden;
-}
-
-.navbar-toggle {
-  width: 100%;
-  display: flex;
-  justify-content: start;
-  align-items: center;
 }
 
 .sidebar-toggle-in {
@@ -396,7 +401,8 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
     background-color: white;
     z-index: 99;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    padding-top: 10vh;
   }
 }
 
@@ -404,4 +410,63 @@ a:hover, a:active, a:focus, a:visited, .account-card, .transaction-item {
   .nav-menu {
     left: calc(32vw - 560px);
   }
+}
+
+.info-items {
+  max-width: 500px;
+  background-color: white;
+  padding: 16px 32px; 
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 0px 24px;
+  margin: 12px 0;
+}
+
+.info {
+  margin-bottom: 16px;
+}
+
+.info label {
+  display: block;
+}
+
+.info input {
+  min-height: 24px;
+  padding: 5px 16px;
+  font-size: 1rem;
+  width: calc(100% - 32px);
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.dob {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dob select {
+  min-height: 24px;
+  padding: 0 16px;
+  background-color: white;
+  font-size: 1.2rem;
+  border: none;
+  border-bottom: 2px solid black;
+}
+
+.dob input {
+  max-width: calc(33% - 16px);
+}
+
+button {
+  border-radius: 25px;
+  min-height: 24px;
+  padding: 5px 16px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: 2px solid #000;
+  background-color: #7FFFD4;
+}
+
+.send-info {
+  margin: auto;
+  display: block;
 }

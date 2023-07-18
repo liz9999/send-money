@@ -41,6 +41,24 @@ const Send = ( {format, rates} ) => {
         setCurrency2(currency2)
     }
 
+    const [lock, setLock] = useState(false)
+
+    const handleLock = () => {
+        setLock(!lock)
+    }
+
+    const genYears = () => {
+        const years = [];
+        let start = 1900;
+        let end = new Date().getFullYear() - 18;
+
+        for (let i = end; i >= start; i--) {
+            years.push(<option value={i}>{i}</option>)
+        }
+
+        return years;
+    }
+
   return (
     <div className="main-container">
         <div className="transfer-request-container">
@@ -49,11 +67,51 @@ const Send = ( {format, rates} ) => {
                 <div className="currency-converter">
                     <h3>You send</h3>
                     <CurrencyInputs onAmountChange={handleAmount1Change} onCurrencyChange={handleCurrency1Change}
-                    currencies={currencies} amount={amount1} currency={currency1}/>
+                    currencies={currencies} amount={amount1} currency={currency1} disabled={lock}/>
                     <h3>Recipient receives</h3>
                     <CurrencyInputs onAmountChange={handleAmount2Change} onCurrencyChange={handleCurrency2Change}
-                    currencies={currencies} amount={amount2} currency={currency2}/>
+                    currencies={currencies} amount={amount2} currency={currency2} disabled={lock}/>
+                    <div className="money-button">
+                        {!lock ? <button onClick={handleLock}>Lock-in Rate</button> :
+                        <button onClick={handleLock}>Unlock Rate</button>}
+                    </div>
                 </div>
+            </div>
+        </div>
+        <div className="recipient-information">
+            <h1>Bank Details</h1>
+            <div className="info-items">
+                <div className="info">
+                    <label>Recipient's email</label>
+                    <input />
+                </div>
+                <div className="info">
+                    <label>Recipient's full name</label>
+                    <input />
+                </div>
+                <div className="info">
+                    <label>Recipient's date of birth</label>
+                    <div className="dob">
+                        <select>
+                            {genYears()}
+                        </select>
+                        <input placeholder="Month"/>
+                        <input placeholder="Day" maxlength="2"/>
+                    </div>
+                </div>
+                <div className="info">
+                    <label>Recipient's phone number</label>
+                    <input />
+                </div>
+                <div className="info">
+                    <label>Recipient's bank name</label>
+                    <input />
+                </div>
+                <div className="info">
+                    <label>Recipient's account number</label>
+                    <input />
+                </div>
+                <button className="send-info">Send Money</button>
             </div>
         </div>
     </div>

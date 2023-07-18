@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import logo from '../Assets/logo.png'
 import menu from '../Assets/menu.png'
 import cancelled from '../Assets/cancelled.png'
+import { FaListAlt } from 'react-icons/fa'
+import { AiOutlineHome } from 'react-icons/ai'
+import { CiMoneyBill } from 'react-icons/ci'
 
 const Navbar = () => {
   const [navbar, setNavbar] = useState(false);
@@ -35,14 +39,18 @@ const Navbar = () => {
         </a>
       </div>
       <div className={navbar ? "nav-menu active" : "nav-menu"}>
+        <img className="navbar-header" src={logo} />
         <ul className="nav-menu-items" onClick={showNavbar}>
           <li>
+            <AiOutlineHome /> 
             <Link to="/">Home</Link>
           </li>
           <li>
+            <FaListAlt /> 
             <Link to="/transactions">Transactions</Link>
           </li>
           <li>
+            <CiMoneyBill /> 
             <Link to="/send">Send Money</Link>
           </li>
           
